@@ -71,23 +71,3 @@ if __name__ == '__main__':
     count = 40
     save_picture(link_apod, nasa_api_key, count)
     save_picture(link_epic, nasa_api_key, count)
-
-
-
-
-
-
-'''
-def fetch_spacex_last_launch(id):
-    url = 'https://api.spacexdata.com/v5/launches/past'
-    params = {'id': id}
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    datas = json.loads(response.text)
-    for index, data in enumerate(datas):
-        path = f'image/space_x_{index}.jpeg'
-        if data['links']['flickr']['original']:
-            images_links = data['links']['flickr']['original']
-            for image_link in images_links:
-                save_picture(image_link, enumerate(datas), )
-                '''
