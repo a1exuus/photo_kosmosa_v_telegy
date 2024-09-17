@@ -27,7 +27,8 @@ def save_epic_images(api_key, url):
             file.write(response.content)
 
 
-api_key = os.getenv('NASA_API_KEY')
-link_epic = 'https://api.nasa.gov/EPIC/api/natural'
+if __name__ == '__main__':
+    api_key = os.getenv('NASA_API_KEY')
+    link_epic = 'https://api.nasa.gov/EPIC/api/natural'
 
-save_epic_images(api_key, link_epic)
+    save_epic_images(api_key, link_epic)

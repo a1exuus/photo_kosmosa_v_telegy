@@ -23,7 +23,8 @@ def save_apod_picture(url, api_key, count):
             file.write(response.content)
 
 
-api_key = os.getenv('NASA_API_KEY')
-link_apod = 'https://api.nasa.gov/planetary/apod'
-count = 40
-save_apod_picture(link_apod, api_key, count)
+if __name__ == '__main__':
+    api_key = os.getenv('NASA_API_KEY')
+    link_apod = 'https://api.nasa.gov/planetary/apod'
+    count = 40
+    save_apod_picture(link_apod, api_key, count)

@@ -23,13 +23,14 @@ def fetch_spacex_last_launch(url, params, launch_id):
                     file.write(response.content)
 
 
-past_spacex_url = 'https://api.spacexdata.com/v5/launches/past'
-parser = argparse.ArgumentParser(
-    description='Данный скрипт получает на вход id любого запуска компании SpaceX и сохраняет фотографии с данного запуска в папку images(если такова отсутствует, он создает её в директории, в которой находиться сам). Если id не был указан, скачивает фотографии с прошлого запуска SpaceX.'
-)
-parser.add_argument('--id',
-                     help='ID запуска SpaceX',
-                     type=str)
-args = parser.parse_args()
-params = {}
-fetch_spacex_last_launch(past_spacex_url, params, args.id)
+if __name__ == '__main__':
+    past_spacex_url = 'https://api.spacexdata.com/v5/launches/past'
+    parser = argparse.ArgumentParser(
+        description='Данный скрипт получает на вход id любого запуска компании SpaceX и сохраняет фотографии с данного запуска в папку images(если такова отсутствует, он создает её в директории, в которой находиться сам). Если id не был указан, скачивает фотографии с прошлого запуска SpaceX.'
+    )
+    parser.add_argument('--id',
+                        help='ID запуска SpaceX',
+                        type=str)
+    args = parser.parse_args()
+    params = {}
+    fetch_spacex_last_launch(past_spacex_url, params, args.id)
