@@ -1,10 +1,7 @@
-import json
 import requests
 import os
 from dotenv import load_dotenv
-
-load_dotenv()
-os.makedirs('image', exist_ok=True)
+import save_picture
 
 
 def save_apod_picture(url, api_key, count):
@@ -13,17 +10,17 @@ def save_apod_picture(url, api_key, count):
         'count': count
      }
     response = requests.get(url, params=params)
-    jsonq = json.loads(response.text)
+    pictures = response.json()
     response.raise_for_status()
-    for index, image_json in enumerate(jsonq):
+    params={}
+    for index, picture in enumerate(pictures):
         path = f'image/nasa_apod_{index}.png'
-        image_url = image_json['url']
-        response = requests.get(image_url)
-        with open(path, 'wb') as file:
-            file.write(response.content)
-
+        image_url = picture['url']
+        save_picture.save_picture(image_url, path, params)
 
 if __name__ == '__main__':
+    load_dotenv()
+    os.makedirs('image', exist_ok=True)
     api_key = os.getenv('NASA_API_KEY')
     link_apod = 'https://api.nasa.gov/planetary/apod'
     count = 40

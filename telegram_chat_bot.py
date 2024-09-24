@@ -5,8 +5,6 @@ import random
 import argparse
 import time
 
-load_dotenv()
-
 
 def get_images_links():
     images_paths = []
@@ -18,18 +16,16 @@ def get_images_links():
 
 
 def send_pictures(chat_id, time_range, images_paths):
-    if time_range == None:
-        time_range = 14400
     while True:
         random.shuffle(images_paths)
-        print(images_paths)
         for image in images_paths:
-            print(image)
-            bot.send_document(chat_id=chat_id, document=open(image, 'rb'))
-            time.sleep(time_range)
+            with open(image, 'rb') as document:
+                bot.send_document(document, chat_id=chat_id)
+                time.sleep(time_range)
 
 
 if __name__ == '__main__':
+    load_dotenv()
     chat_id = os.getenv('TG_CHANNEL_CHAT_ID')
     bot_token = os.getenv('TG_BOT_TOKEN')
     bot = telegram.Bot(token=bot_token)
@@ -38,7 +34,8 @@ if __name__ == '__main__':
     )
     parser.add_argument('--time_range',
                         help='Временной диапазон отправки фотографий(передавайте числа только в секундах, без текста. В 1 часе - 3600 секунд)',
-                        type=int
+                        type=int,
+                        default=14400
                         )
     args = parser.parse_args()
     send_pictures(chat_id, args.time_range, get_images_links())
