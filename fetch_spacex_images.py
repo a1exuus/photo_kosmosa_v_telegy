@@ -4,19 +4,22 @@ import os
 import save_picture
 
 
-def fetch_spacex_last_launch(launch_id):
+def fetch_spacex_launch(launch_id):
     url = 'https://api.spacexdata.com/v5/launches/'
     params = {'id': launch_id}
+    if 'latest' in launch_id:
+        params = {}
     response = requests.get(url, params=params)
     response.raise_for_status()
     pictures = response.json()
-    for index, picture in enumerate(pictures):
-        path = f'image/space_x_{index}.jpeg'
+    for picture in reversed(pictures):
         if picture['links']['flickr']['original']:
             images_links = picture['links']['flickr']['original']
-            params = {}
-            for image_link in images_links:
+            for index, image_link in enumerate(images_links):
+                print(images_links)
+                path = f'image/space_x_{index}.jpeg'
                 save_picture.save_picture(image_link, path, params)
+            break     
 
 
 if __name__ == '__main__':
@@ -27,7 +30,7 @@ if __name__ == '__main__':
     parser.add_argument('--id',
                         help='ID запуска SpaceX',
                         type=str,
-                        default='past'
+                        default='latest'
                         )
     args = parser.parse_args()
-    fetch_spacex_last_launch(args.id)
+    fetch_spacex_launch(args.id)

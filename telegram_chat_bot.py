@@ -20,7 +20,7 @@ def send_pictures(chat_id, time_range, images_paths):
         random.shuffle(images_paths)
         for image in images_paths:
             with open(image, 'rb') as document:
-                bot.send_document(document, chat_id=chat_id)
+                bot.send_document(chat_id=chat_id, document=document)
                 time.sleep(time_range)
 
 
