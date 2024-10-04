@@ -27,7 +27,11 @@
 
 **Перед запуском скрипта обязательно получите API ключ NASA и запишите его в файл .env**
 
-Что-бы вызвать скрипт вам нужно ввести путь к нему в командную строку, в моем случае это `C:\Users\Алексей\Documents\Projects\photo_kosmosa_v_telegy\save_apod_images.py`.
+Откройте командную строку в директории где распологается файл под названием: `save_apod_images.py` и выполните команду:
+
+Для Windows: `python save_apod_images.py`
+
+Для Linux/MacOS: `python3 save_apod_images.py`
 
 Скрипт **НЕ** требует никаких аргументов.
 
@@ -37,7 +41,11 @@
 
 **Перед запуском скрипта обязательно получите API ключ NASA и запишите его в файл .env**
 
-Что-бы вызвать скрипт вам нужно ввести путь к нему в командную строку, в моем случае это `C:\Users\Алексей\Documents\Projects\photo_kosmosa_v_telegy\save_epic_images.py`.
+Откройте командную строку в директории где распологается файл под названием: `save_epic_images.py` и выполните команду:
+
+Для Windows: `python save_epic_images.py`
+
+Для Linux/MacOS: `python3 save_epic_images.py`
 
 Скрипт **НЕ** требует никаких аргументов.
 
@@ -45,7 +53,11 @@
 
 ### Скачивание фотографий с запусков SpaceX
 
-Что-бы вызвать скрипт вам нужно ввести путь к нему в командную строку, в моем случае это `C:\Users\Алексей\Documents\Projects\photo_kosmosa_v_telegy\fetch_spacex_images.py`.
+Откройте командную строку в директории где распологается файл под названием: `fetch_spacex_images.py` и выполните команду:
+
+Для Windows: `python fetch_spacex_images.py`
+
+Для Linux/MacOS: `python3 fetch_spacex_images.py`
 
 Скрипт **ТРЕБУЕТ** необязательный аргумент `--id`. Данный аргумент представляет собой идентификационный код любого запуска SpaceX. Если аргумент не был указан скрипт скачает фотографии с *прошлого* запуска SpaceX.
 
@@ -53,7 +65,13 @@
 
 ### Скрипт с ботом Telegram
 
-Что-бы вызвать скрипт вам нужно ввести путь к нему в командную строку, в моем случае это `C:\Users\Алексей\Documents\Projects\photo_kosmosa_v_telegy\telegram_chat_bot.py`.
+**Перед запуском обязательно узнайте и запишите в файл `.env` Chat ID вашего Telegram канала и Token вашего бота**
+
+Откройте командную строку в директории где распологается файл под названием: `telegram_chat_bot.py` и выполните команду:
+
+Для Windows: `python telegram_chat_bot.py`
+
+Для Linux/MacOS: `python3 telegram_chat_bot.py`
 
 Скрипт **ТРЕБУЕТ** необязательный аргумент `--time_range` **УКАЗЫВАТЬ СТРОГО В СЕКУНДАХ**. Данный аргумент представляет собой временной диапазон, через который он будет отправлять фотографии ранее упомянутых в [README](../README.md) [EPIC](https://epic.gsfc.nasa.gov/), [APOD](https://apod.nasa.gov/apod/) и фотографий с запуска [SpaceX](https://www.spacex.com/) в [Telegram канал](https://t.me/ptboot). Каждый раз фотография выбирается случайно.
 
